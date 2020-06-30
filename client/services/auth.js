@@ -62,3 +62,17 @@ export const withAuth = (Component) => (props) => {
 
   return <Component {...props} />;
 };
+
+export const googleLoginHandler = () => {
+  return firebase
+    .auth()
+    .signInWithPopup(GOOGLE_AUTH_PROVIDER)
+    .then(updateProfile)
+    .then(() => {
+      Router.push("/app");
+    });
+};
+
+export const logoutHandler = () => {
+  return firebase.auth().signOut();
+};
