@@ -3,6 +3,7 @@ import { createContext, useEffect, useState, useContext } from "react";
 import Router from "next/router";
 import Loading from "../components/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
+import LoginPage from "../components/Login";
 
 const GOOGLE_AUTH_PROVIDER = new firebase.auth.GoogleAuthProvider();
 
@@ -56,8 +57,7 @@ export const withAuth = (Component) => (props) => {
   }
 
   if (!auth) {
-    Router.push("/app/login");
-    return null;
+    return <LoginPage />;
   }
 
   return <Component {...props} />;
@@ -67,10 +67,7 @@ export const googleLoginHandler = () => {
   return firebase
     .auth()
     .signInWithPopup(GOOGLE_AUTH_PROVIDER)
-    .then(updateProfile)
-    .then(() => {
-      Router.push("/app");
-    });
+    .then(updateProfile);
 };
 
 export const logoutHandler = () => {

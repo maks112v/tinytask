@@ -1,8 +1,13 @@
 import "../services/firebase";
 import "./_app.scss";
+import { AuthWrapper } from "../services/auth";
 
 function CustomApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <AuthWrapper>
+      <Component {...pageProps} />
+    </AuthWrapper>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for

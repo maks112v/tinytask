@@ -1,11 +1,11 @@
 import React from "react";
 import Head from "next/head";
 
-export default function Seo({ title, titles, desc, image = "/" }) {
+export default function Seo({ title, titles, desc, image = "/tinytask.png" }) {
   title = titles?.join(" • ") || title;
-  const url = "https://otc.nextdoornations.us/";
-  const author = "Next Door Nations";
-  const handle = "@nextdoornations";
+  const url = "https://tinytask.app/";
+  const author = "Tiny Task";
+  const handle = "@tinytask";
 
   return (
     <Head>
