@@ -2,10 +2,15 @@ import "../services/firebase";
 import "./_app.scss";
 import { AuthWrapper } from "../services/auth";
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 function CustomApp({ Component, pageProps }) {
   return (
     <AuthWrapper>
-      <Component {...pageProps} />
+      <DndProvider backend={HTML5Backend}>
+        <Component {...pageProps} />
+      </DndProvider>
     </AuthWrapper>
   );
 }
