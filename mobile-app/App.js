@@ -1,24 +1,33 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { ThemeWrapper } from "./services/theme";
+import {
+  Poppins_100Thin,
+  Poppins_100Thin_Italic,
+  Poppins_200ExtraLight,
+  Poppins_200ExtraLight_Italic,
+  Poppins_300Light,
+  Poppins_300Light_Italic,
+  Poppins_400Regular,
+  Poppins_400Regular_Italic,
+  Poppins_500Medium,
+  Poppins_500Medium_Italic,
+  Poppins_600SemiBold,
+  Poppins_600SemiBold_Italic,
+  Poppins_700Bold,
+  Poppins_700Bold_Italic,
+  Poppins_800ExtraBold,
+  Poppins_800ExtraBold_Italic,
+  Poppins_900Black,
+  Poppins_900Black_Italic,
+  useFonts,
+} from "@expo-google-fonts/poppins";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { AppLoading } from "expo";
+import React from "react";
 import LoginScreen from "./screens/Login";
 import OnboardingScreen from "./screens/Onboarding";
+import { AuthWrapper } from "./services/auth";
 import "./services/firebase";
-import { AppLoading } from "expo";
-import {
-  useFonts,
-  DMSerifText_400Regular,
-} from "@expo-google-fonts/dm-serif-text";
-
-import {
-  DMSans_400Regular,
-  DMSans_500Medium,
-  DMSans_500Medium_Italic,
-  DMSans_700Bold,
-} from "@expo-google-fonts/dm-sans";
+import { ThemeWrapper } from "./services/theme";
 
 const RootStack = createStackNavigator();
 
@@ -32,12 +41,25 @@ function RootStackRouter() {
 }
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    DMSerifText_400Regular,
-    DMSans_400Regular,
-    DMSans_500Medium,
-    DMSans_500Medium_Italic,
-    DMSans_700Bold,
+  const [fontsLoaded] = useFonts({
+    Poppins_100Thin,
+    Poppins_100Thin_Italic,
+    Poppins_200ExtraLight,
+    Poppins_200ExtraLight_Italic,
+    Poppins_300Light,
+    Poppins_300Light_Italic,
+    Poppins_400Regular,
+    Poppins_400Regular_Italic,
+    Poppins_500Medium,
+    Poppins_500Medium_Italic,
+    Poppins_600SemiBold,
+    Poppins_600SemiBold_Italic,
+    Poppins_700Bold,
+    Poppins_700Bold_Italic,
+    Poppins_800ExtraBold,
+    Poppins_800ExtraBold_Italic,
+    Poppins_900Black,
+    Poppins_900Black_Italic,
   });
 
   if (!fontsLoaded) {
@@ -47,7 +69,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeWrapper>
-        <RootStackRouter />
+        <AuthWrapper>
+          <RootStackRouter />
+        </AuthWrapper>
       </ThemeWrapper>
     </NavigationContainer>
   );

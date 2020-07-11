@@ -1,38 +1,35 @@
 import { StyleSheet } from "react-native";
 
 export const fonts = {
-  dm: {
-    serif: "DMSerifText_400Regular",
-    sansRegular: "DMSans_400Regular",
-    sansMedium: "DMSans_500Medium",
-    sansBold: "DMSans_700Bold",
-  },
+  Poppins_100Thin: "Poppins_100Thin",
+  Poppins_200ExtraLight: "Poppins_200ExtraLight",
+  Poppins_300Light: "Poppins_300Light",
+  Poppins_400Regular: "Poppins_400Regular",
+  Poppins_500Medium: "Poppins_500Medium",
+  Poppins_600SemiBold: "Poppins_600SemiBold",
+  Poppins_700Bold: "Poppins_700Bold",
+  Poppins_800ExtraBold: "Poppins_800ExtraBold",
 };
 
 export const typography = StyleSheet.create({
   brandTitle: {
-    fontFamily: fonts.dm.serif,
-    color: "white",
+    fontFamily: fonts.Poppins_600SemiBold,
     fontSize: 28,
   },
   brandMuted: {
-    fontFamily: fonts.dm.sansRegular,
-    color: "#575A7B",
+    fontFamily: fonts.Poppins_300Light,
     fontSize: 14,
   },
   title: {
-    fontFamily: fonts.dm.sansBold,
-    color: "#212121",
+    fontFamily: fonts.Poppins_700Bold,
     fontSize: 20,
   },
   subtitle: {
-    fontFamily: fonts.dm.sansRegular,
-    color: "#212121",
+    fontFamily: fonts.Poppins_400Regular,
     fontSize: 14,
   },
   accent: {
-    fontFamily: fonts.dm.sansRegular,
-    color: "#f25767",
+    fontFamily: fonts.Poppins_400Regular,
     fontSize: 14,
   },
 });
