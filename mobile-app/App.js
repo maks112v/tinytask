@@ -21,21 +21,37 @@ import {
 } from "@expo-google-fonts/poppins";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { decode, encode } from "base-64";
 import { AppLoading } from "expo";
 import React from "react";
-import LoginScreen from "./screens/Login";
-import OnboardingScreen from "./screens/Onboarding";
-import { AuthWrapper } from "./services/auth";
+import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
+import OnboardingScreen from "./screens/OnboardingScreen";
+import { AuthWrapper, useSession } from "./services/auth";
 import "./services/firebase";
 import { ThemeWrapper } from "./services/theme";
+
+if (!global.btoa) {
+  global.btoa = encode;
+}
+
+if (!global.atob) {
+  global.atob = decode;
+}
 
 const RootStack = createStackNavigator();
 
 function RootStackRouter() {
+  const { auth, profile } = useSession();
   return (
     <RootStack.Navigator headerMode="none">
-      <RootStack.Screen name="Login" component={LoginScreen} />
-      <RootStack.Screen name="Home" component={OnboardingScreen} />
+      {auth && profile && profile?.onboard ? (
+        <RootStack.Screen name="Home" component={HomeScreen} />
+      ) : auth ? (
+        <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
+      ) : (
+        <RootStack.Screen name="Login" component={LoginScreen} />
+      )}
     </RootStack.Navigator>
   );
 }

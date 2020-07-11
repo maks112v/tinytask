@@ -17,6 +17,8 @@ export const AuthWrapper = ({ children }) => {
     auth?.uid && firebase.firestore().collection(`users`).doc(auth?.uid)
   );
 
+  console.log(profile);
+
   async function checkApple() {
     const loginAvailable = await AppleAuthentication.isAvailableAsync();
     setAppleAuthAvailable(loginAvailable);
@@ -26,7 +28,7 @@ export const AuthWrapper = ({ children }) => {
     checkApple();
   }, []);
 
-  if (fetchingAuth) {
+  if (fetchingAuth || fetchingProfile) {
     return <AppLoading />;
   }
 
@@ -66,23 +68,6 @@ export async function appleAuthHandler() {
         rawNonce: nonce,
       })
     )
-    .then((res) => {
-      const ref = firebase.firestore().collection("users").doc(res.user.uid);
-      if (res.additionalUserInfo.isNewUser) {
-        return Promise.all([
-          ref.set({
-            email: res.user.email,
-          }),
-          ref
-            .collection("following")
-            .doc("announcement")
-            .set({ createAt: moment().valueOf() }),
-          ref
-            .collection("following")
-            .doc("live")
-            .set({ createAt: moment().valueOf() }),
-        ]);
-      }
-    })
+    .then((res) => {})
     .catch(console.log);
 }

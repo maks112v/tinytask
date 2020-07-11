@@ -11,28 +11,45 @@ export default function Button({
   disabled,
   ...rest
 }) {
-  const { text } = useTheme;
+  const { text, colors } = useTheme();
+
   return (
     <TouchableOpacity
       key={`${title}-${disabled}`}
       disabled={disabled}
-      style={[{ opacity: disabled ? 0.5 : 1 }, styles[type], style]}
+      style={[
+        style,
+        { opacity: disabled ? 0.5 : 1 },
+        {
+          width: "100%",
+          alignItems: "center",
+          color: "white",
+          paddingVertical: 2,
+          paddingHorizontal: 10,
+          borderRadius: 5,
+          backgroundColor: colors?.dark,
+        },
+      ]}
       {...rest}
     >
-      <Text style={[typography.brandMuted, { color: text }]}>{title}</Text>
+      <Text
+        style={[
+          typography.brandMuted,
+          {
+            alignItems: "center",
+            padding: 10,
+            borderRadius: 5,
+            color: colors.light,
+          },
+        ]}
+      >
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  default: {
-    width: "100%",
-    alignItems: "center",
-    color: "white",
-    padding: 10,
-    borderRadius: 5,
-    marginVertical: 5,
-  },
   text: {
     alignItems: "center",
     padding: 10,

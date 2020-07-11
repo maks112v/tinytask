@@ -16,7 +16,7 @@ export default function LoginScreen() {
       <StatusBar style="light" />
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }} />
-        <View style={{ alignItems: "center", marginBottom: 100 }}>
+        <View style={{ alignItems: "center", marginBottom: 50 }}>
           {/* <CheckIcon /> */}
           <Text style={[typography.brandTitle, { color: text }]}>
             Tiny Task
@@ -24,6 +24,8 @@ export default function LoginScreen() {
           <Text style={[typography.brandMuted, { color: muted }]}>
             Regain clarity and calmness
           </Text>
+        </View>
+        <View style={{ margin: 12 }}>
           {appleAuthAvailable && (
             <Button
               onPress={appleAuthHandler}
