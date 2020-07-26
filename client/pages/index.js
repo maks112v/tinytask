@@ -25,7 +25,7 @@ export default function Home() {
           <Button href="/tasks">Login</Button>
         </div>
       </div>
-      <div className="container mx-auto mt-5 md:mt-20 bg-gray-200 grid md:grid-cols-2 p-5 md:p-10 rounded-lg items-center">
+      <div className="container mx-auto mt-5 md:mt-20 grid md:grid-cols-2 rounded-lg items-center">
         <div>
           <h1 className="mb-4">Simplify your life.</h1>
           <h5>

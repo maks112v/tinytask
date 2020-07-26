@@ -1,7 +1,6 @@
 const classes = {
   default: {
-    primary:
-      "bg-gray-600 text-white border-gray-600 hover:bg-muted hover:border-muted",
+    primary: "bg-primary text-white border-primary hover:opacity-75",
     secondary:
       "bg-blue-400 text-white border-blue-400 hover:bg-secondary-light hover:border-secondary-light",
     dark:
@@ -9,7 +8,7 @@ const classes = {
   },
   outlined: {
     primary:
-      "bg-transparent border-gray-600 text-gray-600 font-bold hover:bg-gray-600 hover:text-white",
+      "bg-transparent border-primary text-gray-600 font-bold hover:bg-primary hover:text-white",
     secondary:
       "bg-transparent border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white",
   },

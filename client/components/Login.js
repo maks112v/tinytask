@@ -9,15 +9,10 @@ export default function LoginPage() {
       <Seo titles={["Login", "My.Church"]} />
       <div className="text-center w-full max-w-xs p-2">
         <h1 className="text-4xl md:text-5xl">Sign In</h1>
-        <p>
-          Don’t have an account?{" "}
-          <a className="link" href="/beta">
-            Get Started
-          </a>
-        </p>
+        <p>Let's get you up and running...</p>
         <div className="py-5">
           <Button onClick={googleLoginHandler}>
-            <FaGoogle className="mr-2" /> Google
+            <FaGoogle className="mr-2" /> Login with Google
           </Button>
         </div>
       </div>

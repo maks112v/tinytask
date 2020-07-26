@@ -1,10 +1,13 @@
 module.exports = {
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        primary: "#5264CC",
+        dark: "#444444",
+        muted: "#D4D4D4",
+      },
       fontFamily: {
-        serif: ["DM Serif Display", "serif"],
-        sans: ["DM Sans", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },
