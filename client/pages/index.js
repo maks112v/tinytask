@@ -22,7 +22,7 @@ export default function Home() {
           <a className="mr-5" href="/about">
             About Us
           </a>
-          <Button href="/tasks">Login</Button>
+          <Button href="/app">Login</Button>
         </div>
       </div>
       <div className="container mx-auto mt-5 md:mt-20 grid md:grid-cols-2 rounded-lg items-center">
@@ -34,7 +34,7 @@ export default function Home() {
             device you use).
           </h5>
           <div>
-            <Button href="/tasks" className="mt-5" color="secondary">
+            <Button href="/app" className="mt-5" color="secondary">
               Get Started
             </Button>
           </div>

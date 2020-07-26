@@ -8,6 +8,7 @@ import moment from "moment";
 import { RiAddBoxLine, RiDashboardLine } from "react-icons/ri";
 import greet from "greeting-time";
 import Navbar from "../../components/Navbar";
+import Seo from "../../components/Seo";
 
 const filters = [
   {
@@ -43,7 +44,8 @@ function TasksPage() {
 
   return (
     <>
-      <Navbar />
+      <Seo titles={["Dashboard", "Tasks"]} />
+      <Navbar title={`${greet(new Date())}`} />
       {/* <div className="container">
         <NewTask />
         <div>

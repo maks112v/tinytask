@@ -24,8 +24,7 @@
 }
 
 body {
-  @apply font-poppins text-dark;
-  background-color: #fcfcff;
+  @apply font-poppins text-dark select-none bg-light;
 }
 
 h1 {
@@ -44,16 +43,12 @@ h4 {
   @apply text-lg;
 }
 
-h5 {
-  @apply text-base;
-}
-
 input {
   @apply bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal;
 }
 
-input:focus {
-  @apply;
+h5 {
+  @apply text-2xl;
 }
 
 .btn {
@@ -95,5 +90,17 @@ input:focus {
 
   h5 {
     @apply text-2xl;
+  }
+}
+
+.loader {
+  animation: fa-spin 2s infinite linear;
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
   }
 }

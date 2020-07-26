@@ -8,6 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
+import { StoreWrapper } from "../services/store";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -16,7 +17,9 @@ Router.events.on("routeChangeError", () => NProgress.done());
 function CustomApp({ Component, pageProps }) {
   return (
     <AuthWrapper>
-      <Component {...pageProps} />
+      <StoreWrapper>
+        <Component {...pageProps} />
+      </StoreWrapper>
     </AuthWrapper>
   );
 }
