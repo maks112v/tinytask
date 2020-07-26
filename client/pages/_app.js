@@ -5,12 +5,18 @@ import { AuthWrapper } from "../services/auth";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+import Router from "next/router";
+import NProgress from "nprogress"; //nprogress module
+import "nprogress/nprogress.css"; //styles of nprogress
+
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 function CustomApp({ Component, pageProps }) {
   return (
     <AuthWrapper>
-      <DndProvider backend={HTML5Backend}>
-        <Component {...pageProps} />
-      </DndProvider>
+      <Component {...pageProps} />
     </AuthWrapper>
   );
 }

@@ -1,10 +1,13 @@
-import { withAuth, useSession } from "../services/auth";
-import NewTask from "../components/NewTask";
+import { withAuth, useSession, logoutHandler } from "../../services/auth";
+import NewTask from "../../components/NewTask";
 import { useEffect, useState } from "react";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import Task from "../components/Task";
+import Task from "../../components/Task";
 import moment from "moment";
+import { RiAddBoxLine, RiDashboardLine } from "react-icons/ri";
+import greet from "greeting-time";
+import Navbar from "../../components/Navbar";
 
 const filters = [
   {
@@ -18,7 +21,7 @@ const filters = [
 ];
 
 function TasksPage() {
-  const { auth } = useSession();
+  const { auth, profile } = useSession();
 
   const [currentFilter, setCurrentFilter] = useState(0);
 
@@ -40,10 +43,8 @@ function TasksPage() {
 
   return (
     <>
-      <div className="container">
-        <h3>Today</h3>
-      </div>
-      <div className="container">
+      <Navbar />
+      {/* <div className="container">
         <NewTask />
         <div>
           {filters.map((filter, index) => (
@@ -59,7 +60,7 @@ function TasksPage() {
         ) : (
           <div>No Tasks </div>
         )}
-      </div>
+      </div> */}
     </>
   );
 }

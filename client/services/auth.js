@@ -4,6 +4,7 @@ import Router from "next/router";
 import Loading from "../components/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
 import LoginPage from "../components/Login";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 
 const GOOGLE_AUTH_PROVIDER = new firebase.auth.GoogleAuthProvider();
 
@@ -13,21 +14,27 @@ export const useSession = () => useContext(authContext);
 
 export const AuthWrapper = ({ children }) => {
   const [auth, fetchingAuth, error] = useAuthState(firebase.auth());
+  const [profile, fetchingProfile, profileError] = useDocumentData(
+    auth && firebase.firestore().collection(`users`).doc(auth.uid)
+  );
 
   const isLoading = fetchingAuth;
 
   return (
-    <authContext.Provider value={{ isLoading, auth }}>
+    <authContext.Provider value={{ isLoading, auth, profile }}>
       {children}
     </authContext.Provider>
   );
 };
 
 const updateProfile = (res) => {
+  console.log(res?.user);
   return Promise.all([
     firebase.firestore().collection(`users`).doc(res.user.uid).set(
       {
         email: res.user.email,
+        name: res.user.displayName,
+        image: res.user.photoURL,
       },
       { merge: true }
     ),
