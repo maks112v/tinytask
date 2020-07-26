@@ -10,6 +10,10 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
       },
     },
+    container: {
+      padding: "0.5rem",
+      center: true,
+    },
   },
   variants: {},
   plugins: [],

@@ -40,10 +40,10 @@ function TasksPage() {
 
   return (
     <>
-      <div className="container mx-auto px-2">
+      <div className="container">
         <h3>Today</h3>
       </div>
-      <div className="container mx-auto px-2">
+      <div className="container">
         <NewTask />
         <div>
           {filters.map((filter, index) => (
