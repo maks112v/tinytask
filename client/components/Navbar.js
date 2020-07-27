@@ -8,7 +8,7 @@ import {
 
 export default function Navbar({ title }) {
   return (
-    <div className="container max-w-3xl flex mt-3 md:mt-10 mb-5 items-center">
+    <div className="container max-w-3xl flex mt-5 md:mt-10 mb-5 items-center">
       <h5 className="flex-grow">{title}</h5>
       <div className="grid-flow-col gap-3 border-t sm:border-none items-center absolute bottom-0 right-0 left-0 bg-light grid justify-center sm:relative">
         <Link href="/app">

@@ -1,32 +1,10 @@
-import {
-  Poppins_100Thin,
-  Poppins_100Thin_Italic,
-  Poppins_200ExtraLight,
-  Poppins_200ExtraLight_Italic,
-  Poppins_300Light,
-  Poppins_300Light_Italic,
-  Poppins_400Regular,
-  Poppins_400Regular_Italic,
-  Poppins_500Medium,
-  Poppins_500Medium_Italic,
-  Poppins_600SemiBold,
-  Poppins_600SemiBold_Italic,
-  Poppins_700Bold,
-  Poppins_700Bold_Italic,
-  Poppins_800ExtraBold,
-  Poppins_800ExtraBold_Italic,
-  Poppins_900Black,
-  Poppins_900Black_Italic,
-  useFonts,
-} from "@expo-google-fonts/poppins";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { decode, encode } from "base-64";
-import { AppLoading } from "expo";
+import { registerRootComponent } from "expo";
 import React from "react";
-import HomeScreen from "./screens/HomeScreen";
+import { View } from "react-native";
 import LoginScreen from "./screens/LoginScreen";
-import OnboardingScreen from "./screens/OnboardingScreen";
 import { AuthWrapper, useSession } from "./services/auth";
 import "./services/firebase";
 import { ThemeWrapper } from "./services/theme";
@@ -45,42 +23,45 @@ function RootStackRouter() {
   const { auth, profile } = useSession();
   return (
     <RootStack.Navigator headerMode="none">
-      {auth && profile && profile?.onboard ? (
+      <RootStack.Screen name="Login" component={LoginScreen} />
+      {/* {auth && profile && profile?.onboard ? (
         <RootStack.Screen name="Home" component={HomeScreen} />
       ) : auth ? (
         <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
       ) : (
         <RootStack.Screen name="Login" component={LoginScreen} />
-      )}
+      )} */}
     </RootStack.Navigator>
   );
 }
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    Poppins_100Thin,
-    Poppins_100Thin_Italic,
-    Poppins_200ExtraLight,
-    Poppins_200ExtraLight_Italic,
-    Poppins_300Light,
-    Poppins_300Light_Italic,
-    Poppins_400Regular,
-    Poppins_400Regular_Italic,
-    Poppins_500Medium,
-    Poppins_500Medium_Italic,
-    Poppins_600SemiBold,
-    Poppins_600SemiBold_Italic,
-    Poppins_700Bold,
-    Poppins_700Bold_Italic,
-    Poppins_800ExtraBold,
-    Poppins_800ExtraBold_Italic,
-    Poppins_900Black,
-    Poppins_900Black_Italic,
-  });
+  // const [fontsLoaded] = useFonts({
+  //   Poppins_100Thin,
+  //   Poppins_100Thin_Italic,
+  //   Poppins_200ExtraLight,
+  //   Poppins_200ExtraLight_Italic,
+  //   Poppins_300Light,
+  //   Poppins_300Light_Italic,
+  //   Poppins_400Regular,
+  //   Poppins_400Regular_Italic,
+  //   Poppins_500Medium,
+  //   Poppins_500Medium_Italic,
+  //   Poppins_600SemiBold,
+  //   Poppins_600SemiBold_Italic,
+  //   Poppins_700Bold,
+  //   Poppins_700Bold_Italic,
+  //   Poppins_800ExtraBold,
+  //   Poppins_800ExtraBold_Italic,
+  //   Poppins_900Black,
+  //   Poppins_900Black_Italic,
+  // });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
+
+  return <View></View>;
 
   return (
     <NavigationContainer>
@@ -92,3 +73,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+registerRootComponent(App);
