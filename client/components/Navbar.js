@@ -5,8 +5,11 @@ import {
   RiDashboardLine,
   RiTaskLine,
 } from "react-icons/ri";
+import { useStore } from "../services/store";
 
 export default function Navbar({ title }) {
+  const { toggleCreateTask } = useStore();
+
   return (
     <div className="container max-w-3xl flex mt-5 md:mt-10 mb-5 items-center">
       <h5 className="flex-grow">{title}</h5>
@@ -26,7 +29,7 @@ export default function Navbar({ title }) {
             <RiTaskLine size={25} />
           </a>
         </Link>
-        <button className="px-5 pt-3 pb-5 sm:p-2">
+        <button onClick={toggleCreateTask} className="px-5 pt-3 pb-5 sm:p-2">
           <RiAddBoxLine size={25} />
         </button>
       </div>
