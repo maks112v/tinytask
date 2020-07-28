@@ -1,0 +1,23 @@
+type User @collection(name: "users") {
+  name: String!
+  email: String! @unique(index: "unique_email")
+  tasks: [Task] @relation(name: "user_tasks")
+}
+
+type Task @collection(name: "tasks") {
+  name: String!
+  owner: User! @relation(name: "user_tasks")
+  list: List @relation(name: "list_tasks")
+  completed: Boolean!
+}
+
+type List @collection(name: "lists") {
+  name: String!
+  tasks: [Task] @relation(name: "list_tasks")
+}
+
+type Query {
+  allTasks: [Task!]
+  allLists: [List!]
+  tasksByCompletedFlag(completed: Boolean!): [Task!]
+}
