@@ -52,13 +52,17 @@ function TasksPage() {
     <>
       <Seo titles={["Dashboard", "Tasks"]} />
       <Navbar title={`${greet(new Date())}`} />
-      <div className="container max-w-3xl grid grid-flow-col gap-5">
+      <div
+        className="container max-w-3xl grid gap-5"
+        style={{ gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))` }}
+      >
         <InfoTab
           title="Calendar Events"
           subtitle={`89 Total Events • 2 Upcoming Events`}
           icon={RiCalendarEventLine}
           bgColor="#FDE6E8"
           color="#F25562"
+          link="calendar"
         />
         <InfoTab
           title="Todo Tasks"
@@ -66,6 +70,7 @@ function TasksPage() {
           icon={RiCheckLine}
           bgColor="#E5E8F8"
           color="#5264CC"
+          link="tasks"
         />
       </div>
       {/* <div className="container">
