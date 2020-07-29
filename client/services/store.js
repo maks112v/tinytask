@@ -41,8 +41,7 @@ export const StoreWrapper = ({ children }) => {
         .collection(`tasks`)
         .where("owner", "==", auth.uid)
         .orderBy("complete", "asc")
-        .orderBy("title", "asc")
-        .limit(5),
+        .orderBy("title", "asc"),
     { idField: "id" }
   );
 
