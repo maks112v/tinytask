@@ -37,24 +37,16 @@ function TasksPage() {
       <Navbar title={`${greet(new Date())}`} />
       <div
         className="container max-w-3xl grid gap-5"
-        style={{ gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))` }}
+        style={{ gridTemplateColumns: `repeat(auto-fill, minmax(300px, 1fr))` }}
       >
-        <div>
-          <InfoTab
-            title="Todo Tasks"
-            subtitle={`55 Total Tasks • 4 Upcoming Tasks`}
-            icon={RiCheckLine}
-            bgColor="#E5E8F8"
-            color="#5264CC"
-            link="tasks"
-          />
-          <div className="mt-2">
-            {userTasks?.map((item) => (
-              <Task {...item} />
-            ))}
-          </div>
-        </div>
-
+        <InfoTab
+          title="Todo Tasks"
+          subtitle={`55 Total Tasks • 4 Upcoming Tasks`}
+          icon={RiCheckLine}
+          bgColor="#E5E8F8"
+          color="#5264CC"
+          link="tasks"
+        />
         <InfoTab
           title="Calendar Events"
           subtitle={`89 Total Events • 2 Upcoming Events`}
@@ -63,6 +55,16 @@ function TasksPage() {
           color="#F25562"
           link="calendar"
         />
+      </div>
+      <div
+        className="container max-w-3xl grid gap-5"
+        style={{ gridTemplateColumns: `repeat(auto-fill, minmax(300px, 1fr))` }}
+      >
+        <div>
+          {userTasks?.map((item) => (
+            <Task {...item} />
+          ))}
+        </div>
       </div>
       {/* <div className="container">
         <NewTask />
