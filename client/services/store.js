@@ -40,6 +40,8 @@ export const StoreWrapper = ({ children }) => {
         .firestore()
         .collection(`tasks`)
         .where("owner", "==", auth.uid)
+        .orderBy("complete", "asc")
+        .orderBy("title", "asc")
         .limit(5),
     { idField: "id" }
   );

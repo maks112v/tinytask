@@ -15,6 +15,7 @@ import greet from "greeting-time";
 import Navbar from "../../components/Navbar";
 import Seo from "../../components/Seo";
 import InfoTab from "../../components/InfoTab";
+import { useStore } from "../../services/store";
 
 const filters = [
   {
@@ -28,25 +29,7 @@ const filters = [
 ];
 
 function TasksPage() {
-  const { auth, profile } = useSession();
-
-  const [currentFilter, setCurrentFilter] = useState(0);
-
-  const [
-    data,
-    dataLoading,
-    dataError,
-  ] = useCollectionData(
-    firebase
-      .firestore()
-      .collection(`tasks`)
-      .where("owner", "==", auth.uid)
-      .where("createdAt", ">=", filters[currentFilter].filter)
-      .orderBy("createdAt", "desc"),
-    { idField: "id" }
-  );
-
-  console.log(dataError);
+  const { userTasks } = useStore();
 
   return (
     <>
@@ -56,6 +39,22 @@ function TasksPage() {
         className="container max-w-3xl grid gap-5"
         style={{ gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))` }}
       >
+        <div>
+          <InfoTab
+            title="Todo Tasks"
+            subtitle={`55 Total Tasks • 4 Upcoming Tasks`}
+            icon={RiCheckLine}
+            bgColor="#E5E8F8"
+            color="#5264CC"
+            link="tasks"
+          />
+          <div className="mt-2">
+            {userTasks?.map((item) => (
+              <Task {...item} />
+            ))}
+          </div>
+        </div>
+
         <InfoTab
           title="Calendar Events"
           subtitle={`89 Total Events • 2 Upcoming Events`}
@@ -63,14 +62,6 @@ function TasksPage() {
           bgColor="#FDE6E8"
           color="#F25562"
           link="calendar"
-        />
-        <InfoTab
-          title="Todo Tasks"
-          subtitle={`55 Total Tasks • 4 Upcoming Tasks`}
-          icon={RiCheckLine}
-          bgColor="#E5E8F8"
-          color="#5264CC"
-          link="tasks"
         />
       </div>
       {/* <div className="container">
