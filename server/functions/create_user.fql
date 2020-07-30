@@ -1,0 +1,13 @@
+{
+  name: "create_user",
+  role: null,
+  body: Query(
+    Lambda(
+      ["input"],
+      Create(Collection("users"), {
+        data: { email: Select("email", Var("input")) },
+        credentials: { password: Select("password", Var("input")) }
+      })
+    )
+  )
+}

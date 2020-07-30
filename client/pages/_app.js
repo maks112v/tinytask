@@ -1,14 +1,9 @@
-import "../services/firebase";
-import "./_app.scss";
-import { AuthWrapper } from "../services/auth";
-
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-
 import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
-import "nprogress/nprogress.css"; //styles of nprogress
+import { AuthWrapper } from "../services/auth";
+import "../services/firebase";
 import { StoreWrapper } from "../services/store";
+import "./_app.scss";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
