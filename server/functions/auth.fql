@@ -1,0 +1,29 @@
+{
+  name: "auth",
+  role: null,
+  body: Query(
+  Let({
+    userRef: 
+      If(
+        Exists(
+          Match(
+            Index("unique_email"), "maks112v@gmail.com")
+            ), Select(
+              ["ref"],
+              Get(Match(Index("unique_email"), "maks112v@gmail.com"))
+            ), Select(
+              "ref",
+              Create(Collection("users"), {
+                data: {
+                  email: 'maks112v@gmail.com',                  
+                },
+              }))
+          ),
+    userToken:
+      Create(
+        Tokens(),{ instance: Var("userRef") }
+      ),
+    },
+    Do(Select(["secret"], Var("userToken"))))
+  )
+}

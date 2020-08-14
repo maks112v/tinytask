@@ -1,5 +1,5 @@
 type User @collection(name: "users") {
-  name: String!
+  name: String
   email: String! @unique(index: "unique_email")
   tasks: [Task] @relation(name: "user_tasks")
 }
@@ -17,7 +17,7 @@ type List @collection(name: "lists") {
 }
 
 type Query {
-  allTasks: [Task!]
-  allLists: [List!]
+  # allTasks: [Task!]
+  # allLists: [List!]
   tasksByCompletedFlag(completed: Boolean!): [Task!]
 }
