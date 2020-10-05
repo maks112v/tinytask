@@ -1,8 +1,8 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import NewTask from "../components/NewTask";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { useSession } from "./auth";
-import firebase from "firebase";
+import firebase from 'firebase';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import NewTask from '../components/NewTask';
+import { useSession } from './auth';
 
 const storeContext = createContext({});
 
@@ -20,7 +20,7 @@ export const StoreWrapper = ({ children }) => {
     const query = await firebase
       .firestore()
       .collection(`tasks`)
-      .where("owner", "==", auth?.uid)
+      .where('owner', '==', auth?.uid)
       .get();
 
     console.log(query);
@@ -39,10 +39,10 @@ export const StoreWrapper = ({ children }) => {
       firebase
         .firestore()
         .collection(`tasks`)
-        .where("owner", "==", auth.uid)
-        .orderBy("complete", "asc")
-        .orderBy("title", "asc"),
-    { idField: "id" }
+        .where('owner', '==', auth.uid)
+        .orderBy('complete', 'asc')
+        .orderBy('title', 'asc'),
+    { idField: 'id' }
   );
 
   console.log(userTasks, loadingUserTasks, errorUserTasks);
